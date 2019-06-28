@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="myform" method="post" action="main">
+		<h1>도서등록화면</h1>
+		* 표시 항목은 필수 입력<br> <label>* 도서번호</label>
+		<input type="text" id="isbn1" name="isbn1" class="req">
+		-
+		<input type="text" id="isbn2" name="isbn2" class="req">
+		-
+		<input type="text" id="isbn3" name="isbn3" class="req">
+		<br> 
+		<label>* 도서제목</label>
+		<input type="text" id="title" name="title">
+		<br> 
+		<label>* 도서종류</label> <select id="category" name="category" class="req">
+			<optgroup label="해당 항목을 선택하세요.">
+				<option value="pro">프로그래밍</option>
+				<option value="ess">수필</option>
+			</optgroup>
+		</select> <br> <label>출판국가</label>
+		<input type="radio" id="in" name="country" value="in">
+		<label for="in">국내도서</label>
+		<input type="radio" id="out" name="country" value="out">
+		<label for="out">외국도서</label> <br> <label>출판일</label>
+		<input type="date" id="date" name="date">
+		<br> <label>* 출판사</label> 
+		
+		
+		<select id="publisher"   name="publisher" class="req">
+			<optgroup label="출판사를 선택하세요">
+				<option value="hanbit">한빛미디어</option>
+				<option value="kame">가메출판사</option>
+			</optgroup>
+		</select> 
+		
+		
+		<br> <label>* 저자</label>
+		<input type="text" id="author" name="author"  class="req">
+		<br> <label>* 가격</label>
+		<input type="number" id="price" name="price"  class="req">
+		<select id="unit" name="unit">
+			<option value="￦">￦</option>
+			<option value="$">$</option>
+		</select> <br> <label>요약내용</label>
+		<textarea rows="3" cols="50" id="desc" name="desc"></textarea>
+		<input type="submit" value="도서등록">
+		<input type="reset" value="취소">
+	</form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	function validation(){
+		let result = true;
+		$(".req").each(function(idx, item){
+			if(!$(item).val()){
+				result = false;
+				alert("필수 입력 값을 확인하세요.");
+				return false;
+			}
+		})
+		return result;
+	}
+	
+	$("#myform").on("submit", function(e){
+		if(!validation()){
+			e.preventDefault();
+		}
+	});
+	
+</script>
+</html>
